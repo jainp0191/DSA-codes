@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//brute
 int findMissingElement(int arr[], int size) {
     int temp[size+1];
     for(int i=0; i<size+1;i++)
@@ -20,6 +21,8 @@ int findMissingElement(int arr[], int size) {
     return -1;
 }
 
+
+//optimal-1
 int findMissingElement(int arr[], int size) {
     int sum = 0;
 
@@ -32,6 +35,19 @@ int findMissingElement(int arr[], int size) {
     return sumTillN-sum;
 }
 
+
+//optimal-2
+int findMissingElement(int arr[], int size) {
+    int ans  = 0;
+
+    for(int i=1; i<=size;i++)
+        ans ^= i;
+
+    for(int i=0; i<size-1;i++)
+        ans ^= arr[i];
+
+    return ans;
+}
 
 void printArray(int arr[], int size) {
     for(int i=0; i<size; i++) {
